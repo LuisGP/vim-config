@@ -2,6 +2,21 @@
 " " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
 " Attempt to determine the type of a file based on its name and possibly its
 " " contents. Use this to allow intelligent auto-indenting for each filetype,
 " " and for plugins that are filetype specific.
@@ -9,6 +24,7 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
+colorscheme desert
 
 " Allows you to re-use the same window and switch from an unsaved buffer without saving it first.
 " Also allows you to keep an undo history for multiple files when re-using the same window in this way. Note that using 
@@ -92,3 +108,13 @@ set foldmethod=syntax " fold based on indent level
 
 " Highlight last inserted text
 nnoremap gV `[v`]
+
+" NERDTree and buffer shortcuts
+nmap <F3> :bp<CR>
+nmap <F4> :bn<CR>
+nmap <F5> :NERDTreeToggle<CR>
+" Close vim if the only opened buffer is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" If true Vim master, use English help file.
+set helplang& helplang=es,en
