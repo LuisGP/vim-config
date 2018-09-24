@@ -26,7 +26,10 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
-colorscheme desert
+" colorscheme desert
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Allows you to re-use the same window and switch from an unsaved buffer without saving it first.
 " Also allows you to keep an undo history for multiple files when re-using the same window in this way. Note that using 
