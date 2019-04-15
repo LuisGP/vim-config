@@ -29,7 +29,7 @@ syntax on
 " colorscheme desert
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 " Allows you to re-use the same window and switch from an unsaved buffer without saving it first.
 " Also allows you to keep an undo history for multiple files when re-using the same window in this way. Note that using 
@@ -87,6 +87,7 @@ set number
 
 " highlight current line
 set cursorline
+hi CursorLine cterm=NONE ctermbg=darkgrey
 
 set notimeout ttimeout ttimeoutlen=200
 
