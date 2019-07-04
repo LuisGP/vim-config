@@ -125,3 +125,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " If true Vim master, use English help file.
 set helplang& helplang=es,en
+
+" Remove trailing spaces on save
+autocmd BufWritePre * %s/\s\+$//e
+
