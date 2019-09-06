@@ -33,9 +33,9 @@ set background=dark
 " colorscheme solarized
 
 " Allows you to re-use the same window and switch from an unsaved buffer without saving it first.
-" Also allows you to keep an undo history for multiple files when re-using the same window in this way. Note that using 
+" Also allows you to keep an undo history for multiple files when re-using the same window in this way. Note that using
 " persistent undo also lets you undo in multiple files even in the same window, but is less efficient and is actually
-" designed for keeping undo history after closing Vim entirely. Vim will complain if you try to quit without saving, 
+" designed for keeping undo history after closing Vim entirely. Vim will complain if you try to quit without saving,
 " and swap files will keep you safe if your computer crashes.
 set hidden
 
@@ -128,4 +128,16 @@ set helplang& helplang=es,en
 
 " Remove trailing spaces on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Show vertical line as cursor when in insert mode.
+if has("autocmd")
+    au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+    au InsertEnter,InsertChange *
+        \ if v:insertmode == 'i' |
+        \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute '!echo -ne "\e4 q"' | redraw! |
+        \ endif
+    au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
 
