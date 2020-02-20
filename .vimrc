@@ -90,6 +90,9 @@ set number
 set cursorline
 hi CursorLine cterm=NONE ctermbg=darkgrey
 
+" Allow highlight background from tmux
+highlight Normal ctermbg=NONE
+
 set notimeout ttimeout ttimeoutlen=200
 
 set pastetoggle=<F11>
